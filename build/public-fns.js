@@ -9,7 +9,7 @@ module.exports = function (config) {
      * 编译之前处理函数（用于处理压缩,replace等）
      */
     function prevBuild(pipeArg) {
-        config.isCompress = !!argv['compress'];
+        config.isCompress = argv['compress'] === undefined ? !!argv['compress'] : config.isCompress;
 
         return pipeArg.pipe(include())
             .on('error', console.log)
