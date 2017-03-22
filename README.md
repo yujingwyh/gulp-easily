@@ -1,6 +1,6 @@
 # gulp-easily
 * 该项目仅仅是为了演示gulp的编译html,js,sass,image，主旨简单易懂的学习使用gulp。
-* 涉及到文件include，replace，版本控制等。
+* 涉及到文件include，replace，版本控制，es6编译等。
 
 ## 使用
 * 默认是不压缩代码的
