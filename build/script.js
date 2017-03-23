@@ -32,9 +32,8 @@ function buildScript(gulp, config, fns) {
 }
 function watchScript(gulp, config, fns) {
     fns.changeEvent(gulp.watch(config.script.watch, function () {
-        buildScript(gulp, config, fns)
-            .on('end', function () {
-                gulp.start('rev')
-            });
+        buildScript(gulp, config, fns).then(function () {
+            gulp.start('rev')
+        });
     }));
 }
