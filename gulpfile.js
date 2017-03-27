@@ -5,6 +5,7 @@ var gulpSequence = require('gulp-sequence');
 var config = require('./build/config');
 var publicFns = require('./build/public-fns')(config);
 var clean = require('./build/clean');
+var service = require('./build/service');
 
 var buildHtml = require('./build/html');
 var buildStyle = require('./build/style');
@@ -20,6 +21,9 @@ gulp.task("default", ['build']);
  * 编译该项目
  */
 gulp.task("build", gulpSequence('clean', ['_script', '_html', '_style','_image'], 'rev'));
+gulp.task('dev',['watch'],function () {
+  gulp.start('webserver');
+});
 /**
  * 监视有文件改动会自动编译对应的文件
  */
@@ -28,6 +32,9 @@ gulp.task('watch', function () {
     buildStyle.watch(gulp, config, publicFns);
     buildScript.watch(gulp, config, publicFns);
     buildImage.watch(gulp, config, publicFns);
+});
+gulp.task('webserver',function () {
+  service(gulp, config, publicFns);
 });
 /**
  * 清除生产的目录

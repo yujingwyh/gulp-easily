@@ -3,6 +3,7 @@ var replace = require('gulp-replace');
 var argv = require('minimist')(process.argv.slice(2));
 
 var q = require('q');
+var connect = require('gulp-connect');
 
 module.exports = function (config) {
     /**
@@ -13,7 +14,8 @@ module.exports = function (config) {
 
         return pipeArg.pipe(include())
             .on('error', console.log)
-            .pipe(replace(/@\{output\}/g, config.replace.output));
+            .pipe(replace(/@\{output\}/g, config.replace.output))
+            .pipe(connect.reload());
     }
 
     /**

@@ -6,12 +6,13 @@ module.exports = {
     'output': rootOutput,
     /*是否压缩*/
     'isCompress': false,
+    'port':8088,
     /*在public-fns中替换对应的字符*/
     'replace':{
         'output':rootOutput
     },
     'html': {
-        'input': [rootInput + 'main.html'],
+        'input': [rootInput + 'index.html'],
         'watch': [rootInput + '**/*.html']
     },
     'style': {
@@ -28,7 +29,7 @@ module.exports = {
         'watch': [rootInput + '**/*.+(jpeg|jpg|png|ico)']
     },
     'rev':{
-        'input':[rootOutput+'main.html'],
+        'input':[rootOutput+'index.html'],
         /*替换后的路径前缀*/
         'realityPath':'./'
     }
