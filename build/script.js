@@ -8,7 +8,7 @@ module.exports = {
     'watch': watchScript
 };
 function buildScript(gulp, config, fns) {
-    /*输出到指定目录*/
+    /*输出到指定目录 也可以使用 gulp-rename */
     function outputScript(fs) {
         var directory = fs.base.replace(/\\/g, '/');
         var prevLast = directory.lastIndexOf('/', directory.length - 2);

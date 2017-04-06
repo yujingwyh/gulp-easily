@@ -4,9 +4,8 @@
 
 ## 使用
 * 默认是不压缩代码的
-* 如果需要压缩修改build/config.js中isCompress=true
-* 或者编译时传参 例如:gulp build --compress
-* 开发时会开启web服务，并且自带livereload（修改网页源代码后帮你自动刷新浏览器）
+* 如果需要压缩修改build/config.js中isCompress=true或者编译时传参 例如:gulp build --compress
+* 开发时会开启web服务，并且自带livereload（修改源代码后帮你自动刷新浏览器）
 * 生产环境可将nginx等配置到dist目录即可
 
 ``` bash
