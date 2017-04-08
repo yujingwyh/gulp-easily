@@ -20,6 +20,7 @@ module.exports = {
         'watch': [rootInput + '**/*+(scss|css)']
     },
     'script': {
+        'repairPath':'./script/',
         'libInput': [rootInput + 'script/lib.js'],
         'mainInput': [rootInput + 'script/main.js'],
         'watch': [rootInput + '**/*.js']
