@@ -6,5 +6,5 @@ var lib = lib || {};
  * @return {object}              element
  */
 lib.getEle = function (idName) {
-    return document.getElementById(idName)
+  return document.getElementById(idName)
 };

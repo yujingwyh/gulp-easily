@@ -1,11 +1,12 @@
-$font-normal:14px;
+$font-normal: 14px;
 
-.p-style{
+.p-style {
   display: block !important;
   font-size: $font-normal + 4px;
-  color:#00f;
+  color: #00f;
 }
-#p-script{
+
+#p-script {
   cursor: pointer;
   line-height: 40px;
 }
