@@ -1,9 +1,11 @@
 {
-  "name": "gulp-wasily",
-  "version": "1.0.0",
+  "name": "gulp-easily",
+  "version": "1.1.0",
   "description": "gulp demo",
   "keywords": [
-    "gulp"
+    "gulp",
+    "easily",
+    "demo"
   ],
   "author": "yujing yujingwyh@163.com",
   "license": "MIT",
@@ -28,9 +30,9 @@
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^3.1.1",
     "gulp-include": "^2.3.1",
+    "gulp-regular-version": "^1.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
-    "gulp-rev-handle": "^1.1.3",
     "gulp-rollup": "^2.5.1",
     "gulp-sass": "^3.0.0",
     "gulp-sequence": "^0.4.6",

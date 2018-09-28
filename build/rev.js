@@ -1,9 +1,9 @@
-var revHandle = require('gulp-rev-handle');
+var regularHandle = require('gulp-regular-version');
 
 module.exports = function (gulp, config) {
   /*版本替换*/
   return gulp.src(config.rev.input)
-    .pipe(revHandle({
+    .pipe(regularHandle({
       handlePath(path){
         return config.output + path;
       },
