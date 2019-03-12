@@ -1,5 +1,16 @@
 {
-  "presets": ["es2015", "stage-2"],
-  "plugins": ["transform-runtime"],
-  "comments": false
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "modules": false,
+        "targets": {
+          "browsers": "ie >= 9"
+        }
+      }
+    ]
+  ],
+  "plugins": [
+
+  ]
 }
