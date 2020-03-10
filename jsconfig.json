@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "baseUrl": "src",
+    "paths": {}
+  },
+  "exclude": [
+    "build"
+  ]
+}

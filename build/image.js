@@ -1,22 +1,28 @@
-var imagemin = require('gulp-imagemin');
-var pngquant = require('imagemin-pngquant');
+const gulp = require('gulp');
+const imageMin = require('gulp-imagemin');
+const gulpIf = require('gulp-if');
+
+const config = require('./config');
+const lib = require('./lib');
+const imageGlob = [
+  config.rootInput + '**/*.{png,jpg,gif,ico}'
+];
 
 module.exports = {
   build: buildImage,
   watch: watchImage
 };
-function buildImage(gulp, config) {
-  return gulp.src(config.image.input)
-  /*设置图片压缩，具体参数见imagemin*/
-    .pipe(imagemin({
-      progressive: true,
-      svgoPlugins: [{removeViewBox: false}],
-      use: [pngquant()]
-    }))
-    .pipe(gulp.dest(config.output));
+
+function buildImage() {
+  const stream = lib.buildBefore(imageGlob, true);
+
+  return stream
+    .pipe(gulpIf(config.compress, imageMin()))
+    .pipe(gulp.dest(config.rootOutput));
 }
-function watchImage(gulp, config, fns) {
-  fns.changeEvent(gulp.watch(config.image.watch, function () {
-    buildImage(gulp, config, fns);
-  }));
+
+function watchImage() {
+  const watcher = gulp.watch(imageGlob, buildImage);
+
+  return lib.watchAfter(watcher);
 }

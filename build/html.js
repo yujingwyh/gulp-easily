@@ -1,26 +1,33 @@
-var htmlmin = require('gulp-htmlmin');
-var gulpif = require('gulp-if');
+const gulp = require('gulp');
+const htmlMin = require('gulp-htmlmin');
+const gulpIf = require('gulp-if');
+
+const config = require('./config');
+const lib = require('./lib');
+const htmlGlob = [
+  config.rootInput + '**/*.html',
+];
 
 module.exports = {
   build: buildHtml,
   watch: watchHtml
 };
-function buildHtml(gulp, config, fns) {
-  return fns.prevBuild(gulp.src(config.html.input))
-  /*设置html压缩，具体参数见gulp-htmlmin*/
-    .pipe(gulpif(config.isCompress, htmlmin({
+
+function buildHtml() {
+  const stream = lib.buildBefore(htmlGlob);
+
+  return stream
+    .pipe(gulpIf(config.compress, htmlMin({
       removeComments: true,
-      collapseWhitespace: false,
+      collapseWhitespace: true,
       minifyJS: true,
       minifyCSS: true
     })))
-    .pipe(gulp.dest(config.output));
+    .pipe(gulp.dest(config.rootOutput));
 }
-function watchHtml(gulp, config, fns) {
-  fns.changeEvent(gulp.watch(config.html.watch, function () {
-    buildHtml(gulp, config, fns)
-      .on('end', function () {
-        gulp.start('rev')
-      });
-  }));
+
+function watchHtml() {
+  const watcher = gulp.watch(htmlGlob, buildHtml);
+
+  return lib.watchAfter(watcher);
 }

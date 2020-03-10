@@ -1,12 +1,18 @@
-var path = require('path');
-var connect = require('gulp-connect');
+const path = require('path');
+const serve = require('gulp-serve');
+const liveReload = require('gulp-livereload');
+const liveReloadMiddleware = require("connect-livereload");
 
-module.exports = function (gulp, config) {
-  connect.server({
-    port: config.port,
-    root: path.resolve(config.output),
-    livereload: true,
-    fallback: path.resolve(config.output, 'index.html')
+const config = require('./config');
+
+module.exports = function service() {
+  liveReload.listen({
+    quiet:true
   });
+  serve({
+    root: path.resolve(config.rootOutput),
+    port: config.port,
+    middleware: liveReloadMiddleware()
+  })();
 };
 

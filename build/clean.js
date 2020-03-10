@@ -1,7 +1,11 @@
-var clean = require('gulp-clean');
+const gulp = require('gulp');
+const clean = require('gulp-clean');
 
-module.exports = function (gulp, config) {
-  return gulp.src(config.output, {
-    read: false
-  }).pipe(clean());
+const config = require('./config');
+
+
+module.exports = function clear() {
+  return gulp.src(config.rootOutput, {read: false})
+    .pipe(clean())
+    .pipe(gulp.dest(config.rootOutput));
 };

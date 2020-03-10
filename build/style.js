@@ -1,25 +1,33 @@
-var sass = require('gulp-sass');
-var nano = require('gulp-cssnano');
-var gulpif = require('gulp-if');
+const gulp = require('gulp');
+const less = require('gulp-less');
+const nano = require('gulp-cssnano');
+const gulpIf = require('gulp-if');
+const plumber = require('gulp-plumber');
+
+const config = require('./config');
+const lib = require('./lib');
+const styleGlobal = [config.rootInput + '**/*.{less,css}'];
 
 module.exports = {
   build: buildStyle,
   watch: watchStyle
 };
 
-function buildStyle(gulp, config, fns) {
-  return fns.prevBuild(gulp.src(config.style.input))
-  /*首先编译sass并监听错误*/
-    .pipe(sass().on('error', sass.logError))
-    /*压缩css*/
-    .pipe(gulpif(config.isCompress, nano({zindex: false})))
-    .pipe(gulp.dest(config.output));
+function buildStyle() {
+  const stream = lib.buildBefore(styleGlobal);
+
+  return stream
+    .pipe(plumber())
+    .pipe(less({
+      paths: [config.rootInput]
+    }))
+    .on('error', console.log)
+    .pipe(gulpIf(config.compress, nano({zindex: false})))
+    .pipe(gulp.dest(config.rootOutput));
 }
-function watchStyle(gulp, config, fns) {
-  fns.changeEvent(gulp.watch(config.style.watch, function () {
-    buildStyle(gulp, config, fns)
-      .on('end', function () {
-        gulp.start('rev')
-      });
-  }));
+
+function watchStyle() {
+  const watcher = gulp.watch(styleGlobal, buildStyle);
+
+  return lib.watchAfter(watcher);
 }
