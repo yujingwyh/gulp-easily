@@ -1,5 +1,5 @@
 {
-  "name": "gulp-easily",
+  "name": "gulp-template",
   "version": "2.0.0",
   "description": "gulp demo",
   "keywords": [
@@ -11,7 +11,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yujingwyh/gulp-easily"
+    "url": "https://github.com/yujingwyh/gulp-template"
   },
   "scripts": {
     "start": "gulp start",

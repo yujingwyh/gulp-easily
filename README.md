@@ -1,24 +1,73 @@
-# gulp-easily
-* 该项目仅仅是为了演示gulp的编译html,js,sass,image，主旨简单易懂的学习使用gulp。
-* 涉及到文件include，replace，版本控制，es6编译等。
+# gulp项目模板
+
+> 支持文件include、replace、es6编译、版本控制等
+> 依赖nodejs >= 10，另外请使用npm而不是cnpm
 
 ## 如何使用
-* 默认是不压缩代码的
-* 如果需要压缩修改build/config.js中isCompress=true或者编译时传参 例如:gulp build --compress
-* 开发时会开启web服务，并且自带livereload（修改源代码后帮你自动刷新浏览器）
-* 生产环境可将nginx等配置到dist目录即可
 
-``` bash
-$ npm install #插入依赖
-$ npm run dev #编译并监视文件改动，同时开启web服务
-$ npm run build #编译文件
+### 本地开发
+
+>会自动开启一个web服务，支持livereload
+
+1. 安装依赖(仅首次需要执行此操作)
+`npm install`
+
+2. 启动项目
+`npm start`
+
+3. 预览项目
+打开浏览器输入`localhost:8000`
+
+
+### 生产打包
+
+1. 安装依赖
+`npm install`
+
+2. 编译代码
+`npm run build`
+
+3. nginx配置
+* nginx指定网站路径到该项目dist目录
+* 配置路由重写，如果没有找到`文件或者文件`,重写路由到`index.html`
+
+示例：
+```
+location / {
+    root /var/www/dist/;
+    index index.html index.htm;
+    try_files $uri $uri/ /index.html;
+}
 ```
 
 ## 一些推荐
 
+* gulp-rename
+
+可以实现修改文件名和输出路径
+
+```javascript
+//修改输出目录
+gulp.src("./src/**/hello.js")
+    .pipe(rename(function (path) {
+        path.dirname = './script/';
+    }))
+    .pipe(gulp.dest("./dist"));
+```
+
+* gulp-rollup
+
+一个JavaScript模块打包工具
+
+
 ## 一点想法
-gulp给我的感觉就是简单粗暴，编译也符合正常逻辑，从一个目录经过处理到另一个目录，
-他的插件环境也是很庞大，所以编译起来得心应手，很灵活，这些使得能一直伫立在那儿，也让他只能这样，就是一个编译工具。
+第一个版本应该是在三年前搞的，当时gulp还是很流行。
+最近时常浏览github，发现这个项目很长一段时间都没有更新了，于是抽了点时间去整理了下，并把一些包升级到最新版本。
+不过看了下还是挺伤感的，曾经是一个很火热的东西，但我发现现在很多gulp的第三方插件都是更新于很久很久以前。
+例如在调gulp-connect插件时发现有一点问题，但作者已经很少去维护了，所以不得不找了几个插件结合起来。
+我已经很长的时间里都是写单页Web应用，都是在用webpack打包，主要是webpack这种模块打包很优秀。
+主要是由于webpack全模块化，并且能处理模块依赖。
+指不定那天会搞非单页应用，不过我还是不想去用gulp，我会尽可能的去用webpack实现。
 
 ## License
 [MIT](http://opensource.org/licenses/MIT)
