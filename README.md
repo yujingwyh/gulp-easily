@@ -33,7 +33,7 @@
 `npm run build`
 
 3. nginx配置
-* nginx指定网站路径到该项目dist目录
+* 指定网站路径到该项目`dist`目录
 * 配置路由重写，如果没有找到`文件或者文件`,重写路由到`index.html`
 
 示例：
