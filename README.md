@@ -57,8 +57,11 @@ gulp.src("./src/**/hello.js")
 
 * gulp-rollup
 
-一个JavaScript模块打包工具
+JavaScript模块打包工具
 
+* blueimp-tmpl
+
+JavaScript模板引擎
 
 ## 一点想法
 第一个版本应该是在三年前搞的，当时gulp还是很流行。

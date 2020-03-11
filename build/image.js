@@ -5,7 +5,7 @@ const gulpIf = require('gulp-if');
 const config = require('./config');
 const lib = require('./lib');
 const imageGlob = [
-  config.rootInput + '**/*.{png,jpg,gif,ico}'
+  config.rootInput + '**/*.{png,gif,jpg,jpeg}'
 ];
 
 module.exports = {

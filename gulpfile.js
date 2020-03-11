@@ -6,14 +6,12 @@ const html = require('./build/html');
 const script = require('./build/script');
 const style = require('./build/style');
 const image = require('./build/image');
-const rev = require('./build/rev');
+const version = require('./build/version');
 
-const config = require('./build/config');
 const service = require('./build/service');
 
 exports.build = gulp.series(
-  function advance(cb) {
-    config.compress = true;
+ function advance(cb) {
     cb();
   },
   clean,
@@ -23,7 +21,7 @@ exports.build = gulp.series(
     style.build,
     image.build
   ),
-  rev
+  version
 );
 exports.start = gulp.series(
   exports.build,

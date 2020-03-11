@@ -14,8 +14,8 @@
     "url": "https://github.com/yujingwyh/gulp-template"
   },
   "scripts": {
-    "start": "gulp start",
-    "build": "gulp build"
+    "start": "node ./node_modules/gulp/bin/gulp start",
+    "build": "node ./node_modules/gulp/bin/gulp build"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -33,7 +33,7 @@
     "gulp-live-server": "0.0.31",
     "gulp-livereload": "^4.0.2",
     "gulp-plumber": "^1.2.1",
-    "gulp-regular-version": "^1.2.0",
+    "gulp-regular-version": "^2.0.0",
     "gulp-replace": "^1.0.0",
     "gulp-serve": "^1.4.0",
     "gulp-uglify": "^3.0.2",
