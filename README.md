@@ -1,6 +1,7 @@
 # gulp项目模板
 
 > 支持文件include、replace、es6编译、版本控制等
+
 > 依赖nodejs >= 10，另外请使用npm而不是cnpm
 
 ## 如何使用
