@@ -9,22 +9,27 @@
 
 >会自动开启一个web服务，支持livereload
 
-1. 安装依赖(仅首次需要执行此操作)
+1. 安装依赖
+
 `npm install`
 
 2. 启动项目
+
 `npm start`
 
 3. 预览项目
+
 打开浏览器输入`localhost:8000`
 
 
 ### 生产打包
 
 1. 安装依赖
+
 `npm install`
 
 2. 编译代码
+
 `npm run build`
 
 3. nginx配置
